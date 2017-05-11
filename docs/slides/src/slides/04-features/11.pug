@@ -1,0 +1,17 @@
+h2 Assertions
+
+h4.fragment All the old ones...
+
+h4.fragment plus some new ones
+
+pre.fragment
+  code(data-trim data-noescape).lang-java
+    | @Test
+    | public void testGroupedAssertions() {
+    |   assertAll(
+    |     () -> assertIterableEquals(listA, listB),
+    |     () -> assertNotSame("A", "B"),
+    |     () -> assertTimeoutPreemptively(ofMillis(10), () -> callMethod()),
+    |     () -> assertThrows(IllegalArgumentException.class, callMethod())
+    |   );
+    | }
