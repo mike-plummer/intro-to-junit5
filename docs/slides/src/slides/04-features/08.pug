@@ -1,0 +1,40 @@
+div
+  pre
+    code(data-trim data-noescape).lang-java
+      | public class StatesServiceTest {
+      |     @Nested
+      |     @DisplayName("when retrieving by starting character")
+      |     public class StatesByStartingCharacterTests {
+      |         @Nested
+      |         @DisplayName("with matching value")
+      |         public class MatchingValueTests {
+      |             @Test
+      |             @DisplayName("should return matching values")
+      |             public void shouldReturnMatchingValues() {
+      |                 assertEquals(dataBean.getStatesStartingWith('A').size(), 4);
+      |             }
+      |
+      |             @Test
+      |             @DisplayName("should return sorted values")
+      |             public void shouldReturnSortedValues() {
+      |                 List<String> sortedMatches = new ArrayList<>(dataBean.getStatesStartingWith('A'));
+      |                 sortedMatches.sort();
+      |                 assertEquals(sortedMatches, dataBean.getStatesStartingWith('A'));
+      |             }
+      |         }
+      |
+      |         @Nested
+      |         @DisplayName("with non-matching value")
+      |         public class NonMatchingValueTests {
+      |             @Test
+      |             @DisplayName("should return empty List")
+      |             public void shouldReturnEmptyList() {
+      |                 assertTrue(dataBean.getStatesStartingWith('!').isEmpty());
+      |             }
+      |         }
+      |     }
+      | }
+
+    div.fragment
+      div.fill.centered.obscure
+      img.centered(src="../../../resources/images/nested-test-result.png")

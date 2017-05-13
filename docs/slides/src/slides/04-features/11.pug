@@ -1,17 +1,7 @@
-h2 Assertions
+h2 Extension
 
-h4.fragment All the old ones...
+h3.fragment Replacement of the 'Runner' construct
 
-h4.fragment plus some new ones
-
-pre.fragment
-  code(data-trim data-noescape).lang-java
-    | @Test
-    | public void testGroupedAssertions() {
-    |   assertAll(
-    |     () -> assertIterableEquals(listA, listB),
-    |     () -> assertNotSame("A", "B"),
-    |     () -> assertTimeoutPreemptively(ofMillis(10), () -> callMethod()),
-    |     () -> assertThrows(IllegalArgumentException.class, callMethod())
-    |   );
-    | }
+h4.fragment Dependency Injection
+h4.fragment AOP-style test setup & teardown (Mockito, et al)
+h4.fragment Logging
