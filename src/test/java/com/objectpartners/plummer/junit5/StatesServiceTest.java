@@ -61,18 +61,6 @@ class StatesServiceTest {
         }
 
         @Test
-        @DisplayName("blank value should throw error")
-        void testBlankValue() {
-            assertThrows(IllegalArgumentException.class, () -> service.findByName(" "));
-        }
-
-        @Test
-        @DisplayName("empty value should throw error")
-        void testEmptyValue() {
-            assertThrows(IllegalArgumentException.class, () -> service.findByName(""));
-        }
-
-        @Test
         @DisplayName("matching value should return value")
         void testMatchingValue() {
             assertNotNull(service.findByName("Iowa"));
