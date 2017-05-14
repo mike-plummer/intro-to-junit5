@@ -15,6 +15,12 @@ To view the slides you'll need Node & NPM/YARN.
 4. `npm start` OR `yarn start`
 5. Navigate to `http://localhost:9999` in your browser
 
+### Tests
+
+To run tests and generate all test reports:
+
+`gradle clean junitPlatformTest junitPlatformJacocoReport`
+
 ### Code Examples
 
 Code examples are broken out in the following branches:
