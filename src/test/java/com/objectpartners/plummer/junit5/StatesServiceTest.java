@@ -1,12 +1,10 @@
 package com.objectpartners.plummer.junit5;
 
+import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -15,24 +13,27 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 @DisplayName("StatesService")
-@SpringBootTest
-@ExtendWith(SpringExtension.class)
+//@SpringBootTest
+//@ExtendWith(SpringExtension.class)
+@ExtendWith(FastProvider.class)
+@AllArgsConstructor
 class StatesServiceTest {
 
-    @Autowired
+//    @Autowired
     private StatesService service;
 
     @Nested
     @DisplayName("getAll()")
     class GetAll {
 
-        @Test
+        @DisplayName("should return 50 values \uD83C\uDF55")
+        @RepeatedTest(value = 5, name = "{displayName} {currentRepetition}/{totalRepetitions}")
         void shouldReturnFiftyValues() {
             assertTrue(service.getAll().size() == 50);
         }
 
         @TestFactory
-        @DisplayName("should return all values (Dynamic)")
+        @DisplayName("should return all values (Dynamic) \uD83E\uDD85")
         Collection<DynamicTest> testAllValuesReturnedWithDynamicTest() {
             return Utilities.readFromCsv("/data.csv").stream()
                     .map(values -> dynamicTest(
@@ -45,7 +46,7 @@ class StatesServiceTest {
 
         @ParameterizedTest(name = "{0}")
         @CsvFileSource(resources = "/data.csv")
-        @DisplayName("should return all values (Parameterized)")
+        @DisplayName("should return all values (Parameterized) \uD83C\uDF89")
         void testAllValuesReturnedWithParameterizedTest(String name, String capital) {
             assertTrue(service.getAll().contains(new State(name, capital)));
         }

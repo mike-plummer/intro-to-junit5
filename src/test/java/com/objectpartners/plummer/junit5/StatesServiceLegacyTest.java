@@ -1,7 +1,5 @@
-package com.objectparterns.plummer.junit5;
+package com.objectpartners.plummer.junit5;
 
-import com.objectpartners.plummer.junit5.Application;
-import com.objectpartners.plummer.junit5.StatesService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +17,16 @@ public class StatesServiceLegacyTest {
 
     @Test
     public void testGetMatchingWithNonMatchingValue() {
-        assertTrue(statesService.getMatching("blorg").isEmpty());
+        assertTrue(statesService.getAllMatching("blorg").isEmpty());
     }
 
     @Test
     public void testGetMatchingWithSingleResult() {
-        assertTrue(statesService.getMatching("^Alask").size() == 1);
+        assertTrue(statesService.getAllMatching("^Alask").size() == 1);
     }
 
     @Test
     public void testGetMatchingWithMultipleResults() {
-        assertTrue(statesService.getMatching("^Ala").size() == 2);
+        assertTrue(statesService.getAllMatching("^Ala").size() == 2);
     }
 }
