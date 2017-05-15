@@ -1,6 +1,48 @@
-h2 Lifecycle Hooks
+h2 The same...but different
 
-h3.fragment BeforeClass → BeforeAll
-h3.fragment Before → BeforeEach
-h3.fragment After → AfterEach
-h3.fragment AfterClass → AfterAll
+table
+  tr.fragment
+    td
+      h4 Lifecycle Hooks
+    td
+      pre
+        code.lang-java
+          | @BeforeClass
+          | @Before
+          | @After
+          | @AfterClass
+    td
+      pre
+        code.lang-java
+          | @BeforeAll
+          | @BeforeEach
+          | @AfterEach
+          | @AfterAll
+
+  tr.fragment
+    td
+      h4 Disabling
+    td
+      pre
+        code.lang-java
+          | @Ignore
+    td
+      pre
+        code.lang-java
+          | @Disabled
+
+
+  tr.fragment
+    td
+      h4 Repeated Tests
+    td
+      pre
+        code.lang-text
+          | INSANE AMOUNT OF CODE
+    td
+      pre
+        code.lang-java
+          | @RepeatedTest(
+          |    value = 99,
+          |    name = "{displayName}, {currentRepetition}/{totalRepetitions}"
+          | )
