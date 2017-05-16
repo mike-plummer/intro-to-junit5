@@ -1,7 +1,45 @@
-h2 Extension
+table
+  tr.fragment
+    td
+      h6 Dependency
+    td
+      pre
+        code.lang-java
+          | public class HitchHikersGuide {
+          |   public int theAnswerToLifeTheUniverseAndEverything = 42;
+          | }
 
-h3.fragment Replacement of the 'Runner' construct
+  tr.fragment
+    td
+      h6 Parameter Resolver
+    td
+      pre
+        code.lang-java
+          | public class HitchHikersGuideResolver implements ParameterResolver {
+          |   private static final HitchHikersGuide guide = new HitchHikersGuide();
+          |
+          |   @Override
+          |   public boolean supports(ParameterContext paramCtx, ExtensionContext extCtx) {
+          |     return paramCtx.getParameter().getType() == HitchHikersGuide.class;
+          |   }
+          |
+          |   @Override
+          |   public Object resolve(ParameterContext paramCtx, ExtensionContext extCtx) {
+          |     return guide;
+          |   }
+          | }
 
-h4.fragment Dependency Injection
-h4.fragment AOP-style test setup & teardown (Mockito, et al)
-h4.fragment Logging
+  tr.fragment
+    td
+      h6 Test
+    td
+      pre
+        code.lang-java
+          | @ExtendWith(HitchHikersGuideResolver.class)
+          | public class DependencyInjectionTest {
+          |
+          |   @Test
+          |   public void testTheAnswer(HitchHikersGuide guide) {
+          |     assertEquals(guide.theAnswerToLifeTheUniverseAndEverything, 42);
+          |   }
+          | }
