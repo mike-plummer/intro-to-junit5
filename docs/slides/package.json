@@ -9,8 +9,9 @@
   "license": "MIT",
   "scripts": {
     "prebuild": "del-cli \"dist/**/*\"",
-    "build": "webpack",
+    "build": "webpack --env.production",
     "predeploy": "npm run build",
+    "deploy": "ghpages --path dist",
     "start": "webpack-dev-server --env.development --inline --progress --port 9999 --content-base ./src/public --content-base ./"
   },
   "devDependencies": {
@@ -19,6 +20,7 @@
     "@types/webpack-env": "~1.13.0",
     "copy-webpack-plugin": "~4.0.1",
     "del-cli": "~1.0.0",
+    "ghpages": "~0.0.10",
     "object-partners-presentation": "github:objectpartners/object-partners-presentation-config#1.0.1",
     "webpack": "~2.5.1",
     "webpack-dev-server": "~2.4.5"
