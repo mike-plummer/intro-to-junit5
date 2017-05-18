@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class Utilities {
     public static Collection<String[]> readFromCsv(String filename) {
         try {
-            CSVParser parser = CSVParser.parse(StatesServiceImpl.class.getResource(filename), StandardCharsets.UTF_8, CSVFormat.DEFAULT);
+            CSVParser parser = CSVParser.parse(Utilities.class.getResource(filename), StandardCharsets.UTF_8, CSVFormat.DEFAULT);
             return parser.getRecords().stream()
                     .map(csvRecord -> new String[] {csvRecord.get(0), csvRecord.get(1) })
                     .collect(Collectors.toList());
